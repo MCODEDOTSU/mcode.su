@@ -1,0 +1,115 @@
+// Bootstrap
+@import "variables";
+// @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-sizing($option) {
+    -webkit-box-sizing: $option;
+    -moz-box-sizing: $option;
+    box-sizing: $option;
+}
+
+@mixin transition($transitions...) {
+    -webkit-transition: $transitions;
+    -moz-transition: $transitions;
+    -o-transition: $transitions;
+    transition: $transitions;
+}
+
+@mixin box-shadow($shadows...) {
+    -webkit-box-shadow: $shadows;
+    -moz-box-shadow: $shadows;
+    box-shadow: $shadows;
+}
+
+@mixin background-size($option) {
+    -background-size: $option;
+    -background-size: $option;
+    background-size: $option;
+}
+
+@mixin flex-parent() {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+}
+
+@mixin flex-child() {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+@-webkit-keyframes animation-opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes animation-opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@import "customer.scss";
+@import "responsive.scss";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    height: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+input, input:active, input:hover, input:focus {
+    -webkit-outline: 0 !important;
+    -moz-outline: 0 !important;
+    outline: 0 !important;
+    box-shadow: none;
+}
