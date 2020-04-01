@@ -3,16 +3,14 @@
         <m-header></m-header>
         <div class="content">
             <h1>Портфолио</h1>
-            <vue-scrollbar class="scrollbar scrollbar-min" ref="scrollbar" v-if="loadPortfolioState === 0">
-                <ul class="portfolio">
-                    <li class="item" v-for="item in portfolioItems">
-                        <div class="icon" :style="getStyle(item)">{{ getIconLetter(item) }}</div>
-                        <h2><a :href="item.href" :title="item.title" target="_blank">{{ item.title }}</a></h2>
-                        <p>{{ item.description }}</p>
-                        <p><span v-for="tag in getTags(item)" class="tag">{{ tag }}</span></p>
-                    </li>
-                </ul>
-            </vue-scrollbar>
+            <ul class="portfolio" v-if="loadPortfolioState === 0">
+                <li class="item" v-for="item in portfolioItems">
+                    <div class="icon" :style="getStyle(item)">{{ getIconLetter(item) }}</div>
+                    <h2><a :href="item.href" :title="item.title" target="_blank">{{ item.title }}</a></h2>
+                    <p>{{ item.description }}</p>
+                    <p><span v-for="tag in getTags(item)" class="tag">{{ tag }}</span></p>
+                </li>
+            </ul>
             <p class="load-message" v-else>идёт загрузка данных ...</p>
         </div>
         <m-footer></m-footer>

@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
 }
-
 body, html {
     height: 100vh;
     width: 100%;
@@ -12,9 +11,7 @@ body, html {
     background: $white;
     line-height: 1.5;
 }
-
 body {
-
     a {
         color: $first;
         text-decoration: none;
@@ -23,85 +20,66 @@ body {
             text-decoration: none;
         }
     }
-
     button, .btn {
-
         display: inline-block;
         vertical-align: middle;
         @include border-radius(0);
         @include transition(all .3s ease-out);
-
         i {
             display: inline-block;
             vertical-align: middle;
             margin: 0 5px 0 0;
         }
     }
-
     .animate {
         @include transition(all .3s ease-out);
     }
-
     input {
         display: inline-block;
         vertical-align: middle;
     }
-
     .fa {
         position: static;
     }
 }
-
 .table {
-
     display: table;
     height: 100%;
-
     .table-cell {
         display: table-cell;
         height: 100%;
         vertical-align: middle;
     }
 }
-
 #app {
-
     height: 100vh;
     width: 100%;
-
     > div {
         height: 100vh;
         width: 100%;
         overflow: auto;
     }
 }
-
 .max-height {
     min-height: 100vh;
 }
-
 .logo {
-
-    width: 100%;
     text-align: center;
-    display: block;
     color: $first;
-    position: absolute;
-    left: 0;
-    top: 50%;
+    position: fixed;
+    left: calc(62vw / 2);
+    top: calc(100vh / 2);
     margin-top: -120px;
-
+    margin-left: -179px;
     &:hover {
         color: $hfirst;
     }
-
     h1 {
         font-size: 21px;
         margin: 20px 0 10px;
         text-transform: uppercase;
 
     }
-
     h2 {
         font-size: 18px;
         font-weight: 400;
@@ -109,15 +87,14 @@ body {
         color: $gray;
     }
 }
-
 .main {
-
+    @include flex-parent();
     .left-main {
         width: 62%;
         display: inline-block;
         vertical-align: top;
         position: relative;
-
+        @include flex-child();
         &:after {
             content: "";
             position: absolute;
@@ -132,9 +109,9 @@ body {
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$second", endColorstr="$first", GradientType=1);
         }
     }
-
     .right-main {
         width: 38%;
+        height: 100%;
         display: inline-block;
         vertical-align: top;
         background: $first;
@@ -148,31 +125,26 @@ body {
         font-size: 20px;
         font-weight: 100;
         z-index: 3;
-
+        @include flex-child();
         h2 {
             font-size: 22px;
             font-weight: 500;
-            margin: 32px 16px 16px;
+            margin: 32px 0 16px;
         }
-
         a {
             color: $white;
             cursor: pointer;
             border-bottom: 1px solid $white;
             margin: 0 16px 0 0;
         }
-
         .welcome-content {
             padding: 32px 32px 64px 32px;
             position: relative;
             min-height: 100vh;
         }
-
         .message {
-
             position: relative;
             display: grid;
-
             textarea {
                 width: 100%;
                 height: 200px;
@@ -182,7 +154,6 @@ body {
                 border: none;
                 color: $first;
             }
-
             button {
                 position: absolute;
                 bottom: 0;
@@ -194,7 +165,6 @@ body {
                 width: 100%;
                 text-align: right;
             }
-
             .loader {
                 display: block;
                 width: 100%;
@@ -205,20 +175,13 @@ body {
                 background: $white;
                 opacity: .7;
                 @include transition(all .3s ease-out);
-
                 i {
                     color: $second;
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     margin: -20px 0 0 -20px;
-                    // opacity: 0;
-
-                    &.show {
-                        opacity: 1;
-                    }
                 }
-
                 label {
                     color: $second;
                     position: absolute;
@@ -229,101 +192,60 @@ body {
                     width: 100%;
                     text-align: center;
                     font-weight: 700;
-                    // opacity: 0;
-
                     &.show {
                         opacity: 1;
                     }
                 }
             }
         }
-
         .contacts {
             position: absolute;
             bottom: 0;
             right: 0;
         }
-
-        &:after {
-            // content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: $black;
-            @include transition(all .3s ease-out);
-            opacity: 0;
-        }
-
-        &:hover {
-            &:after {
-                //opacity: .5;
-            }
-        }
-    }
-
-    .vue-scrollbar__wrapper {
-        background: none;
     }
 }
-
 .content {
-
     padding: 44px 0;
     max-width: 100%;
     margin: 0;
     height: 100vh;
     position: relative;
-
     .container {
         max-width: 900px;
+        padding: 0 0 32px;
     }
-
-    .scrollbar {
-        height: calc(100vh - 180px);
-    }
-
     h1 {
         font-size: 24px;
         text-align: center;
         text-transform: uppercase;
         margin: 0 0 32px;
     }
-
     h2 {
         font-size: 22px;
         font-weight: 500;
         margin: 32px 16px 16px;
     }
-
     ul {
         margin: 16px;
         list-style-position: inside;
-
         li {
             margin: 0 0 16px;
         }
     }
-
     ol {
         margin: 16px;
         list-style-position: inside;
-
         li {
             margin: 0 0 16px;
             font-weight: 700;
-
             span {
                 font-weight: 400;
             }
         }
     }
-
     table {
-
         width: 100%;
-
         tr {
             td {
                 padding: 8px 8px 8px 0;
@@ -333,11 +255,8 @@ body {
             }
         }
     }
-
     .message {
-
         position: relative;
-
         textarea {
             width: 100%;
             height: 200px;
@@ -347,7 +266,6 @@ body {
             border: 1px solid $gray;
             color: $first;
         }
-
         input {
             width: calc(50% - 8px);
             display: inline-block;
@@ -355,15 +273,12 @@ body {
             padding: 16px;
             border: 1px solid $gray;
             color: $first;
-
             &.last-child {
                 width: 50%;
                 margin: 0 0 8px 0;
             }
         }
-
         button {
-
             width: 200px;
             margin: 8px 0 0 0;
             padding: 8px 16px 8px 16px;
@@ -372,15 +287,12 @@ body {
             background: $first;
             color: $white;
             text-decoration: none;
-
             &:hover {
                 background: $hfirst;
                 text-decoration: none;
             }
         }
-
         .loader {
-
             display: block;
             width: 100%;
             height: 100%;
@@ -390,20 +302,13 @@ body {
             background: $white;
             opacity: .7;
             @include transition(all .3s ease-out);
-
             i {
                 color: $second;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 margin: -20px 0 0 -20px;
-                // opacity: 0;
-
-                &.show {
-                    opacity: 1;
-                }
             }
-
             label {
                 color: $second;
                 position: absolute;
@@ -414,15 +319,9 @@ body {
                 width: 100%;
                 text-align: center;
                 font-weight: 700;
-                // opacity: 0;
-
-                &.show {
-                    opacity: 1;
-                }
             }
         }
     }
-
     .load-message {
         position: absolute;
         top: 50%;
@@ -433,25 +332,19 @@ body {
         margin: -16px 0 0;
     }
 }
-
 .portfolio {
-
     list-style: none;
     margin: 0;
     padding: 0;
     @include flex-parent();
-
     li {
-
         width: 25%;
         padding: 0 32px 32px 0;
         vertical-align: top;
         @include flex-child();
-
         &:nth-child(4n - 3) {
             padding: 0 32px 32px 32px;
         }
-
         .icon {
             width: 64px;
             height: 64px;
@@ -469,19 +362,16 @@ body {
             @include border-radius(50%);
             @include box-sizing(border-box);
         }
-
         h2 {
             text-align: center;
             font-size: 18px;
             font-weight: 400;
             min-height: 84px;
         }
-
         p {
             font-size: 16px;
             font-weight: 100;
         }
-
         .tag {
             background: $first;
             color: $white;
@@ -494,42 +384,23 @@ body {
         }
     }
 }
-
-footer {
-
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 10px 20px;
-    width: 100%;
-    z-index: 2;
-
-    span {
-        margin: 0 8px 0 0;
-    }
-}
-
 header {
-
     position: absolute;
     left: 0;
     top: 0;
     padding: 10px 20px;
     width: 100%;
     z-index: 2;
-
+    background: $white;
     .menu {
-
         ul {
             margin: 0;
             padding: 0;
             text-align: right;
         }
-
         li {
             display: inline-block;
         }
-
         a {
             padding: 8px;
             color: $gray;
@@ -537,30 +408,29 @@ header {
         }
     }
 }
-
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px 20px;
+    width: 100%;
+    z-index: 2;
+    background: $white;
+    span {
+        margin: 0 8px 0 0;
+    }
+}
 .home {
     header {
         width: 62%;
+        background: none;
+    }
+    footer {
+        background: none;
     }
 }
-
 .actions {
     width: 100%;
     display: inline-block;
     text-align: right;
-}
-
-.vue-scrollbar__scrollbar-vertical .scrollbar, .vue-scrollbar__scrollbar-horizontal .scrollbar {
-    background: rgba(0, 0, 0, 0.1) !important;
-}
-
-.scrollbar {
-
-    height: 100vh;
-
-    &.scrollbar-min {
-        .vue-scrollbar__scrollbar-vertical {
-            width: 5px;
-        }
-    }
 }
