@@ -1,6 +1,4 @@
-// Bootstrap
 @import "variables";
-// @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
@@ -98,18 +96,3 @@
 
 @import "customer.scss";
 @import "responsive.scss";
-
-html, body {
-    margin: 0;
-    padding: 0;
-    min-width: 320px;
-    height: 100%;
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
-input, input:active, input:hover, input:focus {
-    -webkit-outline: 0 !important;
-    -moz-outline: 0 !important;
-    outline: 0 !important;
-    box-shadow: none;
-}

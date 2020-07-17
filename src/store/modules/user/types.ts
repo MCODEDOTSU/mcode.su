@@ -1,8 +1,8 @@
 import IUser from '@/domain/entities/interfaces/IUser';
+import IRole from '@/domain/entities/interfaces/IRole';
 
 export default interface UserState {
-    user: IUser;        // Пользователь
-    token: string;      // Токен для проверки возможности обращения к определенным маршрутам
-    users: IUser[];     // Перечень пользователей
-    role: string;
+    user: IUser;
+    role: IRole;
+    token: string;
 }

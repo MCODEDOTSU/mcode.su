@@ -9,82 +9,82 @@ import UserState from '@/store/modules/user/types';
 export const state: UserState = {
     user: {
         id: 0,
-        name: '',
         email: '',
-        password: '',
+        firstname: '',
+        lastname: '',
+        middlename: '',
+        phone: '',
     },
-    users: [],
+    role: {
+        id: 0,
+        name: '',
+    },
     token: '',
-    role: '',
-};
-
-export const mutations: MutationTree<UserState> = {
-
-    /**
-     * Получение пользователя - и после этого редирект на рабочий стол
-     * @param state
-     * @param payload
-     */
-    getUser(state, payload) {
-        state.user = payload;
-        if (Router.currentRoute.meta.requiresAuth === false) {
-            if (state.user.role === 'M' || state.user.role === 'A') {
-                Router.push({name: 'manager-complaints'});
-            } else if (state.user.role === 'C') {
-                Router.push({name: 'manager-client-complaints'});
-            } else {
-                Router.push({name: 'home'});
-            }
-        }
-    },
-
 };
 
 export const actions: ActionTree<UserState, RootState> = {
 
-    /**
-     * Получение залогиненного пользователя с сервера
-     * @param {any} commit
-     * @param state
-     * @param dispatch
-     * @returns {any}
-     */
-    getUser({commit, state, dispatch}): any {
-        axios.get(`${baseUrlAPI}user`).then((response) => {
-            const payload = response.data;
-            commit('getUser', payload);
-        }, () => {
-            state.token = '';
-            // ErrorNotifier.notify();
+    userLogin({commit, state, dispatch}, payload) {
+
+        state.token = '';
+        state.user = {
+            id: 0,
+            email: '',
+            firstname: '',
+            lastname: '',
+            middlename: '',
+            phone: '',
+        };
+        state.role = {
+            id: 0,
+            name: '',
+        };
+
+        axios.post(`${baseUrlAPI}request`, {
+            action: 'login',
+            type: 'post',
+            data: {phone: payload.phone, password: payload.password}
+        }).then((response) => {
+            const data = response['data']['content'];
+            state.token = data['token'];
+            state.user = {
+                id: data['active_sys_company_user']['id'],
+                email: data['active_sys_company_user']['user']['email'],
+                firstname: data['active_sys_company_user']['user']['firstname'],
+                lastname: data['active_sys_company_user']['user']['lastname'],
+                middlename: data['active_sys_company_user']['user']['middlename'],
+                phone: data['active_sys_company_user']['user']['phone'],
+            };
+            state.role = {
+                id: data['active_sys_company_user']['role']['id'],
+                name: data['active_sys_company_user']['role']['name'],
+            };
+            Router.push({name: 'cabinet'});
+        }).catch((error) => {
+            if (error.response && error.response.status && error.response.status === 422) {
+                ErrorNotifier.notifyWithCustomMessage('Аутентификация не удалась: неверное имя пользователя или пароль');
+            } else {
+                ErrorNotifier.notifyWithCustomMessage('Аутентификация не удалась: неизвестная ошибка');
+            }
         });
+
     },
 
-    async getNewToken({}, payload) {
-        try {
-            const url = `${baseUrlAPI}refresh`;
-            const result = await axios.post(url, state.user);
-            state.token = 'Bearer ' + result.data.token;
-        } catch {
-            ErrorNotifier.notify();
-        }
-    },
-
-    async logout({}, payload) {
-        try {
-            const url = `${baseUrlAPI}logout`;
-            const result = await axios.get(url);
-            state.token = '';
-            Router.push({name: 'home'});
-        } catch {
-            ErrorNotifier.notify();
-        }
-    },
+    // async logout({}, payload) {
+    //     try {
+    //         const url = `${baseUrlAPI}logout`;
+    //         const result = await axios.get(url);
+    //         state.token = '';
+    //         Router.push({name: 'home'});
+    //     } catch {
+    //         ErrorNotifier.notify();
+    //     }
+    // },
 
 
 };
 
 export const user: Module<UserState, RootState> = {
     state,
-    mutations,
     actions,
 };

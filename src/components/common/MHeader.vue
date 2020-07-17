@@ -1,18 +1,8 @@
 <template>
-    <header>
-        <nav class="menu">
-            <ul>
-                <li>
-                    <router-link :to="{ name: 'home' }" title="Главная">Главная</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'portfolio' }" title="Портфолио">Портфолио</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'about' }" title="О нас">О нас</router-link>
-                </li>
-            </ul>
-        </nav>
+    <header class="cabinet">
+        <a class="logo" href="/">
+            <img src="/img/logo_theme_dark.png" />
+        </a>
     </header>
 </template>
 

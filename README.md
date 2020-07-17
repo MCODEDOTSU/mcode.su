@@ -1,4 +1,4 @@
-#### MCODE Front
+#### Groozgo Front
 
 ##### Project setup
 ```

@@ -1,182 +1,77 @@
-@media only screen and (max-width: 1200px) {
-    .main {
-        .right-main {
-            font-size: 18px;
-            h2 {
-                font-size: 20px;
-                margin: 24px 0 8px;
-            }
-        }
-    }
-    .portfolio {
-        li {
-            width: 33.33%;
-            &:nth-child(4n - 3) {
-                padding: 0 32px 32px 0;
-            }
-            &:nth-child(3n - 2) {
-                padding: 0 32px 32px 32px;
+@media only screen and (max-width: 800px) {
+
+    .manager {
+        .form {
+            form {
+                padding: 0 20px;
             }
         }
     }
 }
-@media only screen and (max-width: 854px) {
-    .main {
-        .left-main {
-            width: calc(100% - 300px);
-        }
-        .right-main {
-            width: 300px;
-            .welcome-content {
-                padding: 16px;
-            }
-            .message {
-                textarea {
-                    font-size: 16px;
-                    margin: 16px 0 0;
-                }
-            }
-            .contacts {
-                position: relative;
-                bottom: auto;
-                right: auto;
-                margin: 0;
-                a {
-                    display: block;
-                    text-align: right;
-                    border: none;
-                    margin: 8px 0 0;
-                }
-            }
-        }
-    }
-    .content {
-        .container {
-            max-width: 900px;
-            padding: 0 32px 32px;
-        }
-    }
-}
-@media only screen and (max-width: 784px) {
-    #app {
-        height: auto;
-        > div {
-            height: auto;
-        }
-    }
-    .main {
-        position: relative;
-        .left-main {
-            width: 100%;
-            height: auto;
-            min-height: auto;
-            position: static;
-            &:after {
-                display: none;
-            }
-        }
-        .right-main {
-            width: 100%;
-            height: auto;
-            min-height: auto;
-            .contacts {
-                text-align: right;
-                a {
-                    display: inline-block;
-                    text-align: left;
-                    margin: 8px 0 0 32px;
-                }
-            }
-            .welcome-content {
-                height: auto;
-                min-height: auto;
-                padding: 32px;
-            }
-        }
-    }
-    .logo {
-        display: block;
-        position: relative;
-        left: auto;
-        top: auto;
-        margin: 64px auto 128px;
-    }
-    .portfolio {
-        li {
-            width: 50%;
-            &:nth-child(3n - 2) {
-                padding: 0 32px 32px 0;
-            }
-            &:nth-child(2n - 1) {
-                padding: 0 32px 32px 32px;
-            }
-        }
-    }
-    .content {
-        height: auto;
-        padding: 64px 0 0;
-        .container {
-            padding: 0 32px;
-        }
-    }
+
+@media only screen and (max-width: 600px) {
+
     header {
-        background: $white;
+        &.cabinet {
+            .logo {
+                display: block;
+                width: 120px;
+                margin: 0 auto;
+            }
+        }
     }
-    .home {
-        header {
+
+    .manager {
+
+        .manager-menu {
+            display: block;
+            margin: 0;
+            position: absolute;
+            top: 50px;
+            left: -235px;
+            z-index: 10;
+            height: calc(100vh - 50px);
+
+            &:before {
+                content: "";
+                position: fixed;
+                background: $black;
+                width: calc(100vw - 235px);
+                height: calc(100vh - 50px);
+                top: 50px;
+                left: 235px;
+                z-index: 9;
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            &.visibility {
+                left: 0;
+                &:before {
+                    visibility: visible;
+                    opacity: .2;
+                }
+            }
+
+            .manager-menu-btn {
+                display: block;
+            }
+        }
+
+        .form {
+            padding: 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 380px) {
+
+    .welcome {
+
+        .form {
             width: 100%;
-            position: relative;
-            top: auto;
-            left: auto;
+            padding: calc(50vh - 240px) 10px 10px 10px;
         }
-    }
-    footer {
-        background: $white;
-        position: relative;
-        bottom: auto;
-        left: auto;
-    }
-}
-@media only screen and (max-width: 480px) {
-    .portfolio {
-        li {
-            width: 100%;
-            padding: 0 16px 16px 16px;
-            &:nth-child(2n - 1) {
-                padding: 0 16px 16px 16px;
-            }
-            &:nth-child(3n - 2) {
-                padding: 0 16px 16px 16px;
-            }
-            &:nth-child(4n - 3) {
-                padding: 0 16px 16px 16px;
-            }
-            h2 {
-                min-height: auto;
-            }
-        }
-    }
-}
-@media only screen and (max-height: 360px) {
-    .logo {
-        margin: 32px auto 64px;
-    }
-}
-@media only screen and (max-height: 240px) {
-    .logo {
-        img {
-            width: 64px;
-        }
-    }
-}
-@media only screen and (max-height: 200px) {
-    .logo {
-        margin: 16px auto 32px;
-        h1 {
-            margin: 8px 0;
-        }
-        h2 {
-            font-size: 14px;
-        }
+
     }
 }
